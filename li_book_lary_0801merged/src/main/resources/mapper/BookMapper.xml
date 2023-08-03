@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itbank.libook.service.dao.BookDAO">
+	<select id="searchBookInfo" resultType="bookVO">
+		select *
+		from pr3book
+
+		where book_name like '%' || #{book_name} || '%'
+
+	</select>
+
+	<select id="aBookInfo" resultType="bookVO">
+		select *
+		from pr3book
+		where
+		book_isbn = #{book_isbn}
+	</select>
+
+	<select id="aBookInfoRe" resultType="bookVO">
+		select *
+		from pr3book
+		where
+		book_img = #{book_img}
+	</select>
+
+	<select id="searchBookCategory" resultType="bookVO">
+		select *
+		from pr3book
+		where book_category = #{book_category}
+	</select>
+
+
+
+
+
+	<!-- 우림 -->
+	<insert parameterType="bookVO" id="bookInsert">
+		INSERT INTO PR3BOOK (BOOK_ISBN, BOOK_NAME, BOOK_WRITER, BOOK_PRICE,
+		BOOK_PUB, BOOK_SUB, BOOK_IMG, BOOK_CATEGORY, BOOK_QRY, BOOK_POINT)
+		VALUES (#{book_isbn}, #{book_name}, #{book_writer}, #{book_price},
+		#{book_pub}, #{book_sub}, #{book_img}, #{book_category}, #{book_qry},
+		#{book_point})
+	</insert>
+
+	<select id="isbnChk" resultType="int">
+		SELECT COUNT(*) FROM PR3BOOK WHERE BOOK_ISBN = #{book_isbn}
+	</select>
+
+
+
+
+
+
+
+
+
+	<!-- 진규 -->
+
+
+	<select resultType="bookVO" id="getAllInfo">
+		select * from pr3book
+	</select>
+
+	<select resultType="bookVO" id="getOneBook">
+		select *from pr3book
+		where book_name=#{book_name}
+	</select>
+
+
+	<select resultType="bookVO" id="updateBookQry">
+		update pr3book
+		set book_qry=#{book_qry}
+		where book_isbn=#{book_isbn}
+	</select>
+
+	<select resultType="bookVO" id="orderbynumdesc">
+		select * from pr3book
+		order by book_isbn desc
+	</select>
+
+	<select resultType="bookVO" id="orderbynumasc">
+		select * from pr3book
+		order by book_isbn asc
+	</select>
+
+	<select resultType="bookVO" id="orderbypricedesc">
+		select * from pr3book
+		order by book_price desc
+	</select>
+
+	<select resultType="bookVO" id="orderbypriceasc">
+		select * from pr3book
+		order by book_price asc
+	</select>
+
+	<select resultType="bookVO" id="orderbynamedesc">
+		select * from pr3book
+		order by book_name desc
+	</select>
+
+	<select resultType="bookVO" id="orderbynameasc">
+		select * from pr3book
+		order by book_name asc
+	</select>
+
+	<select resultType="bookVO" id="getbetweenprice">
+		select * from pr3book
+		where book_price between #{sc1} and #{sc2}
+		order by book_price asc
+	</select>
+
+	<select resultType="bookVO" id="getsearchedbook">
+		select *from pr3book
+		where book_name like '%' || #{book_name} || '%'
+	</select>
+
+	<select resultType="bookVO" id="getsearchedwriter">
+		select *from pr3book
+		where book_name like '%' || #{book_writer} || '%'
+	</select>
+
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itbank.libook.service.dao.OrderDAO">
+
+	<insert id="insertOrder" parameterType="orderVO">
+		INSERT INTO pr3order
+		VALUES (order_number.nextval, #{member_num}, #{order_content},
+		#{order_type}, #{order_info}, #{order_price}, #{order_point})
+	</insert>
+
+	<delete id="deleteBasket">
+		DELETE FROM pr3basket
+		WHERE member_num = #{member_num}
+	</delete>
+
+	<update id="updateBookQrt">
+		Update pr3book
+		SET book_qry = book_qry - ${basket_qry}
+		WHERE book_isbn = #{book_isbn}
+	</update>
+
+	<update id="updateMemberPoint">
+		Update pr3member
+		SET member_point = member_point + #{saving_point}
+		WHERE member_num = #{member_num}
+	</update>
+
+	<select id="getOneMember" resultType="memberVO">
+		SELECT * FROM pr3member WHERE member_num = #{member_num}
+	</select>
+
+	<!-- 우림 -->
+	<select id="orderList" parameterType="memberVO"
+		resultType="orderVO">
+		SELECT * FROM PR3ORDER where member_num= #{member_num}
+	</select>
+
+	<select id="everyOrder" resultType="orderVO">
+		SELECT * FROM PR3ORDER
+	</select>
+
+	<update id="orderChange" parameterType="orderVO">
+		UPDATE PR3ORDER
+		SET order_type = #{order_type}
+		WHERE order_number = #{order_number}
+	</update>
+
+</mapper>
