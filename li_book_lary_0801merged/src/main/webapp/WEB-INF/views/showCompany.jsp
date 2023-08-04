@@ -10,7 +10,7 @@
     <button onclick="zoomOut()">축소</button>
     <span id="maplevel"></span>
 </p> -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4045841291beea9629c8a77168d12cce"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=여기에 카카오 api번호"></script>
 <script>
 
 //마커가 표시될 위치입니다 
