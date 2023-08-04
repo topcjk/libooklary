@@ -65,9 +65,9 @@
 
 		<property value="465" name="port" />
 
-		<property value="zz239966@naver.com" name="username" />
+		<property value="네이버아이디" name="username" />
 
-		<property value="ejrfufwldo!003" name="password" />
+		<property value="비밀번호" name="password" />
 
 		<!-- 보안연결 ssl 설정 -->
 
